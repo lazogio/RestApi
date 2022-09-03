@@ -13,7 +13,7 @@ public class test {
     expectedResponse expectedResponse = new expectedResponse();
 
     @Test
-    public void main() {
+    public void main(){
 
         Response response  = getResponseStep.userStep();
         UserDataModel userDataModel = response.as(UserDataModel.class);
@@ -27,15 +27,14 @@ public class test {
                         .checkMetaSize(userDataModel.getMeta().getPagination().getPages(),path.get(expectedResponse.pages).toString())
                         .checkMetaSize(userDataModel.getMeta().getPagination().getTotal(),path.get(expectedResponse.total).toString());
 
-
-        for (var i=0;i<userDataModel.getData().size();i++){
+      for (var i=0;i<userDataModel.getData().size();i++){
             DataItem dataItem = userDataModel.getData().get(i);
             validationResponse
-                    .checkId(dataItem.getId(), path.get(expectedResponse.id))
-                    .checkName(dataItem.getName(),path.get(expectedResponse.name))
-                    .checkEmail(dataItem.getEmail(),path.get(expectedResponse.email))
-                    .checkGender(dataItem.getGender(),path.get(expectedResponse.gender))
-                    .checkStatus(dataItem.getStatus(),path.get(expectedResponse.status));
+                            .checkId(dataItem.getId(), path.get(expectedResponse.id+"["+i+"]"))
+                            .checkName(dataItem.getName(),path.get(expectedResponse.name+"["+i+"]"))
+                            .checkEmail(dataItem.getEmail(),path.get(expectedResponse.email+"["+i+"]"))
+                            .checkGender(dataItem.getGender(),path.get(expectedResponse.gender+"["+i+"]"))
+                            .checkStatus(dataItem.getStatus(),path.get(expectedResponse.status+"["+i+"]"));
         }
 
     }

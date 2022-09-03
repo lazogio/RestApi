@@ -2,11 +2,8 @@ package Steps;
 
 import Models.DataItem;
 import io.qameta.allure.Step;
-
 import java.util.List;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
 
 public class ValidationResponse {
 
@@ -61,7 +58,7 @@ public class ValidationResponse {
 
     @Step
     public ValidationResponse checkEmail(String Email,String expEmail) {
-        assertNotEquals(Email,expEmail,"Check email :");
+        assertEquals(Email,expEmail,"Check email :");
 
         return this;
     }

@@ -1,0 +1,9 @@
+.idea/
+build/
+target/
+allure-results
+*.ipr
+*.iml
+*.iws
+*.log
+*.mdmp
